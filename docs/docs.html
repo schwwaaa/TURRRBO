@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TURRRBO — Documentation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Permanent+Marker&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <style>
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -13,18 +13,23 @@
 /* ── Design tokens ── */
 :root {
   --black:    #0a0a0a;
-  --surface:  #111;
-  --raised:   #1a1a1a;
-  --border:   #222;
-  --muted:    #444;
-  --secondary:#888;
-  --primary:  #e0e0e0;
-  --accent:   #c8ff00;
+  --surface:  #150f14;
+  --raised:   #1c141b;
+  --border:   #2b1f28;
+  --muted:    #6b5865;
+  --secondary:#b79cb0;
+  --primary:  #f5eef2;
+  --accent:   #c8ff00;   /* dominant — neon lime, unchanged from the app */
   --accent2:  #00ffc8;
   --danger:   #ff4444;
 
+  --pink:      #ff2f92;  /* highlight only */
+  --pink-soft: #ffb6d9;  /* highlight only */
+
   --font-display: 'Syne', sans-serif;
   --font-mono:    'Space Mono', monospace;
+  --font-scrawl:  'Permanent Marker', cursive;
+  --font-hand:    'Caveat', cursive;
 
   --sidebar-w: 260px;
   --content-max: 780px;
@@ -65,15 +70,30 @@ body {
 .sidebar-logo {
   padding: 28px 24px 20px;
   border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.sidebar-logo::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 4px;
+  background-image: repeating-conic-gradient(var(--black) 0% 25%, var(--accent) 0% 50%);
+  background-size: 8px 8px;
+  opacity: 0.85;
 }
 
 .logo-word {
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--accent);
-  letter-spacing: 0.05em;
+  font-family: var(--font-scrawl);
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: 0.01em;
   display: block;
+  text-decoration: none;
+  color:  #c8ff00;
+  margin-bottom: 16px;
+  text-shadow: 2px 2px 0 black, 4px 4px 0 #ff2f92;
+  line-height: 1;
+  transform: rotate(-1deg);
 }
 
 .logo-sub {
@@ -90,10 +110,10 @@ body {
   margin-top: 8px;
   padding: 2px 8px;
   background: var(--raised);
-  border: 1px solid var(--border);
+  border: 1px solid var(--pink);
   border-radius: 3px;
   font-size: 10px;
-  color: var(--secondary);
+  color: var(--pink-soft);
 }
 
 .sidebar-nav {
@@ -140,10 +160,10 @@ body {
   float: right;
   font-size: 9px;
   padding: 2px 5px;
-  background: var(--raised);
+  background: rgba(255,47,146,0.08);
   border-radius: 3px;
-  color: var(--muted);
-  border: 1px solid var(--border);
+  color: var(--pink-soft);
+  border: 1px solid rgba(255,47,146,0.3);
   margin-top: 1px;
 }
 
@@ -165,6 +185,15 @@ body {
   align-items: center;
   justify-content: space-between;
   z-index: 50;
+}
+.topbar::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -3px;
+  height: 3px;
+  background-image: repeating-conic-gradient(var(--black) 0% 25%, var(--accent) 0% 50%);
+  background-size: 8px 8px;
+  opacity: 0.7;
 }
 
 .breadcrumb {
@@ -203,16 +232,19 @@ body {
 
 /* ── Typography ── */
 h1 {
-  font-family: var(--font-display);
-  font-size: 42px;
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  color: #fff;
+  font-family: var(--font-scrawl);
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.005em;
+  color:  #c8ff00;
   margin-bottom: 16px;
+  text-shadow: 4px 4px 0 black, 7px 7px 0 #ff2f92;
+  line-height: 1;
+  transform: rotate(-1deg);
 }
 
-h1 .accent { color: var(--accent); }
+h1 .accent { color: #ff2f92; text-shadow: 3px 3px 0 white; }
 
 .lead {
   font-size: 16px;
@@ -230,6 +262,17 @@ h2 {
   margin: 48px 0 16px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border);
+  position: relative;
+}
+h2::before {
+  content: '';
+  display: inline-block;
+  width: 22px; height: 8px;
+  margin-right: 10px;
+  vertical-align: middle;
+  background-image: repeating-conic-gradient(var(--black) 0% 25%, var(--accent) 0% 50%);
+  background-size: 8px 8px;
+  border-radius: 1px;
 }
 
 h3 {
@@ -254,17 +297,23 @@ p {
   padding: 6px 14px;
   background: rgba(200,255,0,0.07);
   border: 1px solid rgba(200,255,0,0.2);
-  border-radius: 4px;
+  border-radius: 999px;
   font-size: 12px;
   color: var(--accent);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 20px;
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 15px;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  transform: rotate(-1.5deg);
 }
 
 .hero-callout-dot {
   width: 6px; height: 6px;
-  background: var(--accent);
+  background: var(--pink);
   border-radius: 50%;
   animation: pulse-dot 2s ease-in-out infinite;
 }
@@ -653,6 +702,9 @@ code {
   border-radius: 4px;
   padding: 14px;
 }
+.route-grid .route-pill:nth-child(3n+1) { border-left: 3px solid var(--accent); }
+.route-grid .route-pill:nth-child(3n+2) { border-left: 3px solid var(--accent2); }
+.route-grid .route-pill:nth-child(3n+3) { border-left: 3px solid var(--pink); }
 
 .route-pill-name {
   font-family: var(--font-display);
@@ -1091,7 +1143,7 @@ code {
 <!-- ── Sidebar ── -->
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-logo">
-    <span class="logo-word">TURRRBO</span>
+    <a class="logo-word" href="index.html">TURRRBO</a>
     <span class="logo-sub">Documentation</span>
     <span class="sidebar-version">v0.1.0</span>
   </div>
@@ -1143,6 +1195,7 @@ code {
       <span class="breadcrumb-current" id="breadcrumb-current">Introduction</span>
     </div>
     <div class="topbar-links">
+      <a href="index.html" class="topbar-link">← turrrbo.app</a>
       <a href="https://github.com" class="topbar-link">GitHub ↗</a>
       <a href="https://github.com/NVlabs/stylegan2-ada-pytorch" class="topbar-link">StyleGAN2 ↗</a>
     </div>
