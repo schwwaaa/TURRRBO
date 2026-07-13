@@ -1,0 +1,53 @@
+TURRRBO — Third-Party Licenses
+================================
+
+--------------------------------------------------------------------------------
+StyleGAN2 / StyleGAN2-ADA / StyleGAN3
+NVIDIA Corporation
+--------------------------------------------------------------------------------
+
+Copyright (c) 2021, NVIDIA Corporation. All rights reserved.
+
+This work is made available under the NVIDIA Source Code License.
+Use is restricted to non-commercial purposes only.
+
+Full license text: https://nvlabs.github.io/stylegan2/license.html
+
+Pretrained model weights (*.pkl files) are covered under the same license
+and may not be used commercially or redistributed without permission from NVIDIA.
+
+--------------------------------------------------------------------------------
+PyTorch
+Facebook AI Research / PyTorch Contributors
+--------------------------------------------------------------------------------
+
+Copyright (c) 2016-Facebook, Inc (Adam Paszke)
+Copyright (c) 2014-Facebook, Inc (Soumith Chintala)
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou,
+                         Iain Melvin, Jason Weston)
+Copyright (c) 2006 Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio,
+                         Johnny Mariethoz)
+
+Used under the BSD-style license. Full text:
+https://github.com/pytorch/pytorch/blob/main/LICENSE
+
+--------------------------------------------------------------------------------
+FastAPI
+Sebastián Ramírez
+--------------------------------------------------------------------------------
+
+MIT License — https://github.com/tiangolo/fastapi/blob/master/LICENSE
+
+--------------------------------------------------------------------------------
+Tauri
+Tauri Programme within The Commons Conservancy
+--------------------------------------------------------------------------------
+
+MIT / Apache-2.0 dual license — https://github.com/tauri-apps/tauri/blob/dev/LICENSE
+
+--------------------------------------------------------------------------------

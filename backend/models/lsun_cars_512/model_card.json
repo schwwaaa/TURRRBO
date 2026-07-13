@@ -1,0 +1,11 @@
+{
+  "id": "lsun_cars_512",
+  "name": "Automotive Drift",
+  "description": "Trained on LSUN Cars. Produces automotive silhouettes with strange chrome logic — reflections, surfaces, and body lines recombine in ways that feel almost recognizable.",
+  "resolution": 512,
+  "category": "object",
+  "provenance": "NVIDIA StyleGAN2 pretrained on LSUN Cars. Non-commercial use only. https://github.com/NVlabs/stylegan2",
+  "checkpoint_file": "stylegan2-car-config-f.pkl",
+  "recommended_psi": 0.75,
+  "tags": ["car", "vehicle", "chrome", "industrial"]
+}

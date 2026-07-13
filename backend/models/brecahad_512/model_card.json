@@ -1,0 +1,11 @@
+{
+  "id": "brecahad_512",
+  "name": "Stain Field",
+  "description": "Trained on BreCaHAD histopathology slides. Produces abstract cellular fields — pink and violet biological texture with no fixed subject.",
+  "resolution": 512,
+  "category": "specimen",
+  "provenance": "BreCaHAD breast histopathology dataset, NVIDIA StyleGAN2-ADA (trained from scratch). NVIDIA Source Code License-NC. https://github.com/NVlabs/stylegan2-ada-pytorch",
+  "checkpoint_file": "brecahad_512.pkl",
+  "recommended_psi": 0.7,
+  "tags": ["microscopy", "cellular", "abstract"]
+}

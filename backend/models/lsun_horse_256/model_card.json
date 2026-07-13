@@ -1,0 +1,11 @@
+{
+  "id": "lsun_horse_256",
+  "name": "Glue Factory",
+  "description": "Trained on LSUN Horse. Produces melting equine anatomy — fused limbs, extra legs, bodies that collapse into meat at high \u03c8. The canonical broken GAN.",
+  "resolution": 256,
+  "category": "animal",
+  "provenance": "LSUN Horse, NVIDIA StyleGAN2 (config-f, legacy TF checkpoint converted with legacy.py). NVIDIA Source Code License-NC. https://github.com/NVlabs/stylegan2",
+  "checkpoint_file": "lsun_horse_256.pkl",
+  "recommended_psi": 1.0,
+  "tags": ["horse", "broken", "anatomy"]
+}

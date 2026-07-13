@@ -1,0 +1,19 @@
+# backend/requirements.txt
+# TURRRBO Python backend dependencies
+#
+# PyTorch — install separately from https://pytorch.org with the correct
+# CUDA/MPS/CPU variant for your target platform.
+# e.g. pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+#
+# StyleGAN2-ADA-PyTorch — clone the repo:
+# git clone https://github.com/NVlabs/stylegan2-ada-pytorch.git backend/vendor/stylegan2
+# No pip install needed — we add it to sys.path at runtime.
+
+fastapi==0.109.2
+uvicorn[standard]==0.27.1
+pydantic==2.6.1
+Pillow==10.2.0
+numpy==1.26.4
+
+# Optional: if you want to package the backend with PyInstaller
+# pyinstaller==6.4.0

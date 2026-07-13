@@ -1,0 +1,30 @@
+{
+  "name": "turrrbo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "backend": "PYTHONUNBUFFERED=1 backend/env/bin/python3 -u backend/api/server.py --port 47474",
+    "tauri:dev": "concurrently -k -n BACKEND,TAURI -c cyan,yellow \"npm run backend\" \"npm run tauri dev\"",
+    "tauri:build": "npm run build && npx tauri build --bundles app",
+    "make:dmg": "APP=\"src-tauri/target/release/bundle/macos/TURRRBO.app\" && DMG=\"src-tauri/target/release/bundle/dmg/TURRRBO_0.1.0.dmg\" && mkdir -p src-tauri/target/release/bundle/dmg && STAGING=$(mktemp -d) && cp -r \"$APP\" \"$STAGING/TURRRBO.app\" && ln -s /Applications \"$STAGING/Applications\" && hdiutil create -volname TURRRBO -srcfolder \"$STAGING\" -ov -format UDZO \"$DMG\" && rm -rf \"$STAGING\" && echo \"Built: $DMG\""
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^1.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "zustand": "^4.4.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.5.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "typescript": "^5.0.0",
+    "vite": "^4.0.0",
+    "concurrently": "^8.2.0"
+  }
+}

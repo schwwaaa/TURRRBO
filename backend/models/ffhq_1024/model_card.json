@@ -1,0 +1,11 @@
+{
+  "id": "ffhq_1024",
+  "name": "Synthetic Portraits",
+  "description": "Trained on FFHQ — 70,000 high-quality human faces. Produces synthetic portrait structures. Best with truncation 0.5–0.8 for coherent but drifting faces.",
+  "resolution": 1024,
+  "category": "face",
+  "provenance": "NVIDIA StyleGAN2-ADA pretrained. Non-commercial use only. https://github.com/NVlabs/stylegan2-ada-pytorch",
+  "checkpoint_file": "ffhq-res1024-mirror-stylegan2-noaug.pkl",
+  "recommended_psi": 0.7,
+  "tags": ["portrait", "face", "synthetic", "high-resolution"]
+}

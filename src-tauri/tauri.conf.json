@@ -1,0 +1,88 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/schema.json",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "devPath": "http://localhost:5173",
+    "distDir": "../dist",
+    "withGlobalTauri": true
+  },
+  "package": {
+    "productName": "TURRRBO",
+    "version": "0.1.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "open": true,
+        "sidecar": false,
+        "execute": false
+      },
+      "dialog": {
+        "all": false,
+        "open": true,
+        "save": true
+      },
+      "fs": {
+        "all": false,
+        "readFile": true,
+        "writeFile": true,
+        "createDir": true,
+        "scope": [
+          "$APPDATA/*",
+          "$APPDATA/**",
+          "$DOWNLOAD/*",
+          "$PICTURE/*",
+          "$HOME/**"
+        ],
+        "copyFile": true
+      },
+      "path": {
+        "all": true
+      },
+      "protocol": {
+        "asset": true,
+        "assetScope": [
+          "$HOME/**",
+          "/Users/**",
+          "/tmp/**"
+        ]
+      }
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "identifier": "art.turrrbo.app",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.png"
+      ],
+      "resources": [
+        "resources/models/**/*",
+        "resources/licenses/THIRD_PARTY_LICENSES.txt"
+      ],
+      "externalBin": [
+        "binaries/turrrbo-backend"
+      ]
+    },
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' asset: https://asset.localhost data: blob:; style-src 'self' 'unsafe-inline'"
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "resizable": true,
+        "title": "TURRRBO",
+        "width": 1280,
+        "height": 860,
+        "minWidth": 1024,
+        "minHeight": 700
+      }
+    ]
+  }
+}

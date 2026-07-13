@@ -1,0 +1,11 @@
+{
+  "id": "maps_1024",
+  "name": "Phantom Atlas",
+  "description": "Trained on a corpus of maps. Produces hallucinated cartography \u2014 coastlines, terrain and roads for places that do not exist. Melts into nonsense geography at high \u03c8.",
+  "resolution": 1024,
+  "category": "cartography",
+  "provenance": "MapDreamer, trained by Topi Tjukanov on map imagery using NVIDIA StyleGAN2 (config-f, legacy TF checkpoint converted with legacy.py). License unknown \u2014 treat as non-commercial. https://medium.com/@tjukanov/mapdreamer-ai-cartography-4f2f6a40ef55",
+  "checkpoint_file": "maps_1024.pkl",
+  "recommended_psi": 0.8,
+  "tags": ["map", "cartography", "abstract"]
+}

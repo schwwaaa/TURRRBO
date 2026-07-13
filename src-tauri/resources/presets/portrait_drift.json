@@ -1,0 +1,13 @@
+{
+  "id": "portrait_drift",
+  "name": "Portrait Drift",
+  "model_id": "ffhq_1024",
+  "params": {
+    "seed": 42,
+    "truncation_psi": 0.6,
+    "noise_mode": "const",
+    "mix_seed": null,
+    "mix_layers": null
+  },
+  "note": "Mid-range truncation — coherent but slightly off-center. Safe starting point for faces."
+}
