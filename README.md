@@ -1,183 +1,220 @@
-# TURRRBO
+<div align="center">
 
-A desktop image instrument built on StyleGAN2. Generates synthetic images from
-latent space — seed exploration, truncation control, and style mixing — packaged
-as a native app for artists.
+<img src="./assets/banner.png" alt="TURRRBO — stylegan instrument" width="700">
 
-**Non-commercial use only** (due to NVIDIA StyleGAN2 model license).
+<br>
 
----
+[![license](https://img.shields.io/badge/license-non--commercial-c8ff00?style=for-the-badge&labelColor=0a0a0a)](#-a-note-on-licensing)
+[![platform](https://img.shields.io/badge/platform-macOS-ff2f92?style=for-the-badge&labelColor=0a0a0a)](#-technical-requirements)
+[![status](https://img.shields.io/badge/status-free_4ever-c8ff00?style=for-the-badge&labelColor=0a0a0a)](#-download)
+[![stack](https://img.shields.io/badge/stack-tauri_%2B_stylegan2-ff2f92?style=for-the-badge&labelColor=0a0a0a)](#-built-with)
 
-## Stack
+**`FREE 4EVER`** ✦ **`NO WI-FI NEEDED`** ✦ **`NON-COMMERCIAL & PROUD`** ✦ **`WEIRD ON PURPOSE`**
 
-| Layer | Technology |
+</div>
+
+<img src="./assets/divider.png" width="100%" height="14" alt="">
+
+## ✦ What this is
+
+TURRRBO is a free, offline desktop application for generating images from latent space using pretrained StyleGAN2 models. It runs entirely on your machine — no internet connection, no API key, no subscription.
+
+This is not a text-to-image tool. You are not typing prompts and getting illustrations. You are navigating a mathematical space that a neural network learned by looking at thousands of real images — and pulling out what lives there.
+
+**The results are weirder. More specific. More yours.**
+
+<img src="./assets/divider.png" width="100%" height="14" alt="">
+
+## ✦ Download
+
+Get the current build free on Gumroad — pay what you want, no account required.
+
+<div align="center">
+
+### **[→ schwwaaa.gumroad.com/l/turrrbo](https://schwwaaa.gumroad.com/l/turrrbo)**
+
+</div>
+
+Full usage docs live at **[turrrbo.app/docs](https://turrrbo.app/docs.html)**.
+
+<img src="./assets/divider.png" width="100%" height="14" alt="">
+
+## ✦ Table of Contents
+
+- [What's Inside](#-whats-inside)
+- [Controls](#-controls-that-actually-mean-something)
+- [Style Routes](#-9-style-routes)
+- [CLIP Text Guidance](#-clip-text-guidance-optional)
+- [Templates](#-8-built-in-templates)
+- [Who This Is For](#-fit-check)
+- [Technical Requirements](#-technical-requirements)
+- [A Note on Licensing](#-a-note-on-licensing)
+- [Development](#-development)
+- [Built With](#-built-with)
+
+<img src="./assets/divider.png" width="100%" height="14" alt="">
+
+## ✦ What's Inside
+
+5 pretrained models, each a different visual territory:
+
+| Model | Dataset | Resolution | Territory |
+|---|---|---|---|
+| **Synthetic Portraits** | FFHQ | 1024px | 70,000 human faces collapsed and remixed into synthetic identities. Coherent at mid settings. Dissolves into anatomy-horror at the extremes. |
+| **Museum Wreckage** | MetFaces | 1024px | Portrait paintings from the Metropolitan Museum of Art. Painterly surfaces, visible brushwork, art-historical drift. |
+| **Haunted Schematics** | LSUN Churches | 256px | Architecture with recombinant structural logic — arches and spires merged in ways that feel almost recognizable. |
+| **Animal Forms** | AFHQ Cats | 512px | Feline anatomy that abstracts into fur-texture fields under pressure. |
+| **Automotive Drift** | LSUN Cars | 512px | Chrome logic, strange reflections, body lines that almost make sense. |
+
+<img src="./assets/divider.png" width="100%" height="14" alt="">
+
+## ✦ Controls that actually mean something
+
+| Control | What it does |
 |---|---|
-| Desktop shell | Tauri (Rust) |
-| Frontend | React + TypeScript + Zustand |
-| Backend / inference | Python + FastAPI + StyleGAN2-ADA-PyTorch |
-| IPC | Tauri commands → localhost HTTP |
+| **Seed** | Each integer is a different identity, a different location in the model's learned world. |
+| **Truncation ψ** | How far from the average to go. Low = safe. High = strange. |
+| **Split truncation** | Push pose and texture in different directions simultaneously. |
+| **Noise strength** | Flood the surface with stochastic detail. |
+| **Style mixing** | Let two seeds share one image — coarse structure from one, fine texture from another. |
 
----
+<img src="./assets/divider.png" width="100%" height="14" alt="">
 
-## First-time setup
+## ✦ 9 Style Routes
 
-### 1. Install system dependencies
+Named artistic modes, not sliders you have to guess at:
 
-- [Rust](https://rustup.rs/) (stable)
-- [Node.js](https://nodejs.org/) 18+
-- Python 3.10+
-- Tauri CLI prerequisites for your OS: https://tauri.app/v1/guides/getting-started/prerequisites
+`Ghost Contour` · `Thermal Hallucination` · `Overexposed Memory` · `Broken Chroma` · `TV Wreckage` · `Cartoon Corrosion` · `Structure Transplant` · `Fine Transplant`
 
-### 2. Clone StyleGAN2-ADA-PyTorch into vendor
+### ✎ CLIP Text Guidance (optional)
+
+Type a description and the latent vector optimizes toward it. Not a prompt engine — a steering mechanism. Effective prompts describe visual qualities, not subjects.
+
+<img src="./assets/divider.png" width="100%" height="14" alt="">
+
+## ✦ 8 Built-in Templates
+
+Starting points that demonstrate what the models can do:
+
+`Raw Output` · `Average Collapse` · `Full Chaos` · `Structure Swap` · `Split Truncation` · `Noise Flood` · `Ghost`
+
+<img src="./assets/divider.png" width="100%" height="14" alt="">
+
+## ✦ Fit Check
+
+<table>
+<tr>
+<td valign="top" width="50%">
+
+**This is for you if —**
+
+- You're an artist bored of the same AI aesthetic.
+- You're a designer who wants source material that doesn't look like everyone else's source material.
+- You're a photographer or collage artist looking for synthetic textures, faces, and forms to work with.
+- You're an experimenter who wants to understand how these models actually behave — not just what they produce when you ask nicely.
+- You find glitches, artifacts, and model failures more interesting than clean photorealistic output.
+
+</td>
+<td valign="top" width="50%">
+
+**This is not for you if —**
+
+- You want photorealistic images from text prompts — use Midjourney or Stable Diffusion instead.
+- You want an image that could have come from anywhere. TURRRBO is for images that feel like they came from somewhere specific — a model with character, trained on a particular dataset, pushed into territory it was never meant to go.
+
+</td>
+</tr>
+</table>
+
+<img src="./assets/divider.png" width="100%" height="14" alt="">
+
+## ✦ Technical Requirements
+
+| | |
+|---|---|
+| **OS** | macOS 12 Monterey or later (Apple Silicon M1/M2/M3 recommended) |
+| **Memory** | 8 GB RAM minimum, 16 GB recommended for the 1024px models |
+| **Storage** | ~3 GB disk space |
+| **Setup** | No Python, no terminal, no setup — for end users. (Building from source needs both — see below.) |
+| **Network** | No internet connection required after install |
+
+<img src="./assets/divider.png" width="100%" height="14" alt="">
+
+## ✦ A Note on Licensing
+
+> TURRRBO uses pretrained model weights from NVIDIA Research. These weights are licensed for **non-commercial use only**. That means TURRRBO is free — and must stay free.
+>
+> This is not a limitation. It's the whole point.
+
+<img src="./assets/divider.png" width="100%" height="14" alt="">
+
+## ✦ Development
+
+This section is for building TURRRBO from source, not for end users — grab the packaged app from [Gumroad](https://schwwaaa.gumroad.com/l/turrrbo) instead unless you're contributing.
+
+### Stack
+
+- **Shell:** [Tauri](https://tauri.app/) (Rust)
+- **Frontend:** React + TypeScript, Vite
+- **Backend:** Python / FastAPI, packaged as a PyInstaller sidecar
+- **Inference:** [StyleGAN2-ADA-PyTorch](https://github.com/NVlabs/stylegan2-ada-pytorch)
+
+### Prerequisites
+
+- Node.js + npm
+- Rust toolchain (`rustup`)
+- Python 3.10+ with a virtualenv at `backend/env`
+- `numpy<2.0` (required — the StyleGAN2 checkpoints depend on the legacy `numpy.core` API)
+
+### Setup
 
 ```bash
-git clone https://github.com/NVlabs/stylegan2-ada-pytorch.git backend/vendor/stylegan2
-```
-
-### 3. Install Python backend deps
-
-```bash
-cd backend
-pip install -r requirements.txt
-```
-
-Install PyTorch separately with the correct platform variant:
-```bash
-# CUDA 12.1 (NVIDIA GPU)
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
-
-# Apple Silicon (MPS)
-pip install torch torchvision
-
-# CPU only
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-```
-
-### 4. Download pretrained model checkpoints
-
-```bash
-python scripts/download_models.py
-```
-
-This downloads NVIDIA pretrained weights into `backend/models/*/`.
-These files are for **non-commercial use only** per the NVIDIA license.
-
-Available models:
-- `ffhq_1024` — Synthetic Portraits (FFHQ, 1024px)
-- `metfaces_1024` — Museum Wreckage (MetFaces painting corpus, 1024px)
-- `lsun_churches_256` — Haunted Schematics (LSUN Churches, 256px)
-- `afhq_cats_512` — Animal Forms (AFHQ cats, 512px)
-- `lsun_cars_512` — Automotive Drift (LSUN Cars, 512px)
-
-### 5. Install frontend deps
-
-```bash
+git clone <this-repo>
+cd TURRRBO
 npm install
+
+# pull model weights into backend/models
+npm run stage:models
 ```
 
----
-
-## Development
-
-Run Tauri in dev mode (starts Python backend automatically as a sidecar):
+### Run in dev mode
 
 ```bash
-npm run tauri dev
+npm run tauri:dev
 ```
 
-Or run the Python backend standalone for faster iteration:
+This runs the Python backend (`backend/api/server.py`, port `47474`) and the Tauri/Vite frontend concurrently. The backend reads models from `backend/models` in dev mode.
+
+### Build a release
 
 ```bash
-cd backend
-python api/server.py --port 47474
+npm run tauri:build
+# or, for just the .dmg:
+npm run make:dmg
 ```
 
----
+`src-tauri/resources/models` is symlinked to `backend/models` — the bundler follows the symlink and copies real files into the packaged app, so there's only one physical copy of the weights on disk.
 
-## Building for distribution
+### Scripts
 
-### 1. Bundle the Python sidecar
+| Script | What it does |
+|---|---|
+| `npm run tauri:dev` | Backend + frontend + Tauri shell, all together, hot-reloading |
+| `npm run tauri:build` | Full production build |
+| `npm run make:dmg` | Package the `.dmg` |
+| `npm run backend` | Run just the Python backend |
+| `npm run stage:models` | Download/verify model weights |
 
-```bash
-pip install pyinstaller
-python scripts/build_sidecar.py
-```
+<img src="./assets/divider.png" width="100%" height="14" alt="">
 
-This produces `src-tauri/binaries/python-sidecar-<target-triple>`.
+## ✦ Built With
 
-### 2. Build the Tauri app
+`Tauri` · `Rust` · `React` · `TypeScript` · `Python` · `FastAPI` · `PyInstaller` · `StyleGAN2-ADA-PyTorch`
 
-```bash
-npm run tauri build
-```
+Model weights courtesy of **NVIDIA Research**, non-commercial license.
 
-Outputs a `.dmg` (macOS) or `.msi` / `.exe` (Windows) installer in `src-tauri/target/release/bundle/`.
+<br>
 
----
-
-## Project structure
-
-```
-turrrbo/
-  src/                       React frontend
-    components/
-      ModelCatalog.tsx       Left rail — model selection
-      ParameterControls.tsx  Right rail — StyleGAN controls
-      PreviewPanel.tsx       Center — image display + history
-      StatusBar.tsx          Footer — backend health
-    store/
-      generatorStore.ts      Zustand global state
-    styles/app.css           All styles
-  src-tauri/                 Tauri / Rust shell
-    src/
-      main.rs                App entry, sidecar launch
-      commands.rs            Tauri command handlers (proxy to Python API)
-      sidecar.rs             Backend health polling
-  backend/                   Python inference service
-    api/server.py            FastAPI server (runs on :47474)
-    stylegan_engine/
-      inference.py           StyleGAN2 wrapper
-      model_registry.py      Reads model_card.json files
-      preset_store.py        Saves/loads user presets
-    models/                  One subfolder per checkpoint
-      ffhq_1024/
-        model_card.json
-        *.pkl                (downloaded separately)
-    presets/                 User-saved parameter presets
-    vendor/stylegan2/        Cloned from NVlabs (not committed)
-  scripts/
-    download_models.py       Fetch pretrained checkpoints
-    build_sidecar.py         PyInstaller bundle script
-  resources/
-    licenses/
-      THIRD_PARTY_LICENSES.txt
-```
-
----
-
-## StyleGAN controls
-
-| Control | Range | What it does |
-|---|---|---|
-| **Seed** | 0 – 2³¹ | Selects a point in latent Z space — each seed is a distinct identity |
-| **Truncation ψ** | 0.0 – 1.0 | Low = average/safe; high = extreme/unusual. 0.7 is the NVIDIA default |
-| **Noise mode** | const / random / none | Controls stochastic surface detail. `const` is deterministic |
-| **Mix seed** | optional int | Borrows coarse structure (pose, shape) from a second latent point |
-
----
-
-## Adding custom model checkpoints
-
-1. Create a folder under `backend/models/<your_model_id>/`
-2. Copy your `.pkl` checkpoint into it
-3. Write a `model_card.json` — see `backend/models/ffhq_1024/model_card.json` as a template
-4. Restart the backend — the model will appear in the catalog automatically
-
----
-
-## License
-
-TURRRBO application code: personal / non-commercial use.
-
-Pretrained StyleGAN2 weights: NVIDIA non-commercial research license.
-See `resources/licenses/THIRD_PARTY_LICENSES.txt` for full attribution.
+<div align="center">
+<sub>No servers were harmed in the making of this image, because there are no servers.</sub>
+</div>
