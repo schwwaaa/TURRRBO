@@ -289,6 +289,15 @@ p {
   max-width: var(--content-max);
 }
 
+.hero-sub {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 20px;
+}
+
 /* ── Hero callout ── */
 .hero-callout {
   display: inline-flex;
@@ -1204,7 +1213,10 @@ code {
   <!-- ════════════════ INTRODUCTION ════════════════ -->
   <section class="section active" id="sec-intro">
     <div class="hero-callout"><div class="hero-callout-dot"></div>StyleGAN2 · Non-commercial</div>
-    <h1>TURRRBO<br><span class="accent">Image Instrument</span></h1>
+    <h1>TURRRBO<br>
+      <!-- <span class="accent">Image Instrument</span> -->
+    </h1>
+    <!-- <div class="hero-sub">stylegan instrument</div> -->
     <p class="lead">A desktop application for generating images from StyleGAN2 latent space. Point it at a seed. Adjust truncation. Explore what the model learned. No cloud. No subscription. No internet required.</p>
 
     <div class="quickstart-grid">
