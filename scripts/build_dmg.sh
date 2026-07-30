@@ -26,33 +26,42 @@ echo "→ Architecture: $TRIPLE"
 # ── Step 1: Download any missing model checkpoints ────────────────────────────
 echo ""
 echo "[ 1/5 ] Checking model checkpoints..."
-backend/.venv/bin/python3 scripts/download_models.py
+backend/env/bin/python3 scripts/fetch_models.py
 echo "→ All models present"
 
-# ── Step 2: Stage models into src-tauri/resources/models/ ────────────────────
+# ── Step 2: Verify src-tauri/resources/models is symlinked to backend/models ─
 echo ""
-echo "[ 2/5 ] Staging models into bundle resources..."
+echo "[ 2/5 ] Checking model resource symlink..."
 
-STAGED="$ROOT/backend/models/models"
-rm -rf "$STAGED"
-mkdir -p "$STAGED"
+# ⚠ This step used to copy the whole backend/models tree into
+# backend/models/models — a second full copy of every checkpoint, sitting
+# right next to the first. That's the "why do I have two copies of every
+# model" bug. Fixed: src-tauri/resources/models is now a SYMLINK to
+# backend/models, so there's only ever one physical copy on disk, and the
+# Tauri bundler (which follows symlinks) still sees real files at build time.
 
-for model_dir in "$ROOT/backend/models"/*/; do
-    model_name=$(basename "$model_dir")
-    mkdir -p "$STAGED/$model_name"
-    # Copy model card
-    cp "$model_dir/model_card.json" "$STAGED/$model_name/"
-    # Copy any .pkl checkpoint
-    for pkl in "$model_dir"*.pkl; do
-        [ -f "$pkl" ] && cp "$pkl" "$STAGED/$model_name/" && echo "  → staged: $model_name/$(basename $pkl)"
-    done
-done
+RESOURCES_MODELS="$ROOT/src-tauri/resources/models"
+CANONICAL_MODELS="$ROOT/backend/models"
 
-# Stage presets too
+if [ -L "$RESOURCES_MODELS" ]; then
+    echo "→ symlink already in place: $RESOURCES_MODELS -> $(readlink "$RESOURCES_MODELS")"
+elif [ -e "$RESOURCES_MODELS" ]; then
+    echo "✕ $RESOURCES_MODELS exists but is a real directory, not a symlink."
+    echo "  This means models may be duplicated on disk. Fix it with:"
+    echo "    rm -rf \"$RESOURCES_MODELS\""
+    echo "    ln -s ../../backend/models \"$RESOURCES_MODELS\""
+    exit 1
+else
+    mkdir -p "$ROOT/src-tauri/resources"
+    ln -s ../../backend/models "$RESOURCES_MODELS"
+    echo "→ created symlink: $RESOURCES_MODELS -> ../../backend/models"
+fi
+
+# Stage presets (small — a real copy here is fine, not worth symlinking)
 STAGED_PRESETS="$ROOT/src-tauri/resources/presets"
 rm -rf "$STAGED_PRESETS"
 cp -r "$ROOT/backend/presets" "$STAGED_PRESETS"
-echo "→ Models staged"
+echo "→ Presets staged"
 
 # ── Step 3: Build Python sidecar ─────────────────────────────────────────────
 echo ""
@@ -60,7 +69,7 @@ echo "[ 3/5 ] Building Python sidecar (this takes a few minutes)..."
 
 mkdir -p "$ROOT/src-tauri/binaries"
 
-backend/.venv/bin/python3 -m PyInstaller \
+backend/env/bin/python3 -m PyInstaller \
     --clean \
     --noconfirm \
     --distpath "$ROOT/src-tauri/binaries/_dist" \
@@ -78,7 +87,7 @@ echo "[ 4/5 ] Creating icons..."
 
 mkdir -p "$ROOT/src-tauri/icons"
 
-backend/.venv/bin/python3 - << 'PYEOF'
+backend/env/bin/python3 - << 'PYEOF'
 from PIL import Image, ImageDraw
 import os
 from pathlib import Path
@@ -127,7 +136,7 @@ echo "→ .icns created"
 echo ""
 echo "[ 5/5 ] Configuring tauri.conf.json and building..."
 
-backend/.venv/bin/python3 - << 'PYEOF'
+backend/env/bin/python3 - << 'PYEOF'
 import json
 from pathlib import Path
 

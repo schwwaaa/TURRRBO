@@ -489,23 +489,15 @@
             transition: border-color 0.15s ease, transform 0.15s ease;
         }
         
-        .card:nth-child(1) {
+        .card:nth-child(3n+1) {
             border-top: 4px solid var(--lime);
         }
         
-        .card:nth-child(2) {
+        .card:nth-child(3n+2) {
             border-top: 4px solid var(--cyan);
         }
         
-        .card:nth-child(3) {
-            border-top: 4px solid var(--lime);
-        }
-        
-        .card:nth-child(4) {
-            border-top: 4px solid var(--cyan);
-        }
-        
-        .card:nth-child(5) {
+        .card:nth-child(3n) {
             border-top: 4px solid var(--pink);
         }
         
@@ -830,6 +822,48 @@
                 display: none;
             }
         }
+        .schwwaaa-footer {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: 28px 0 36px;
+            text-align: center;
+            font-family: "Audiowide", sans-serif;
+        }
+
+        .schwwaaa-footer-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .schwwaaa-footer-image {
+            display: block;
+            width: min(168px, 44vw);
+            height: auto;
+            object-fit: contain;
+            opacity: 0.9;
+            filter: drop-shadow(0 0 12px rgba(255,255,255,0.22))
+                    drop-shadow(0 0 22px rgba(13,110,253,0.18));
+            transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .schwwaaa-footer-logo:hover .schwwaaa-footer-image {
+            opacity: 1;
+            transform: translateY(-1px);
+            filter: drop-shadow(0 0 14px rgba(255,255,255,0.35))
+                    drop-shadow(0 0 28px rgba(13,110,253,0.32));
+        }
+
+        .schwwaaa-footer-label {
+            display: block;
+            margin-top: 8px;
+            color: rgba(255,255,255,0.54);
+            font-size: 0.58rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }        
     </style>
 </head>
 
@@ -865,7 +899,8 @@
             <div class="hero-cta">
                 <a href="https://schwwaaa.gumroad.com/l/turrrbo" target="_blank" rel="noopener noreferrer" class="btn-primary">Get it free on Gumroad →<span class="burst">!!</span></a>
                 <span class="hero-meta">macOS · pay what you want · no account required</span>
-                <a href="docs.html" class="btn-secondary">✎ Read the docs</a>
+                <a href="docs.html" class="btn-secondary">Read the docs</a>
+                <a href="https://github.com/schwwaaa/TURRRBO" class="btn-secondary">Github</a>
             </div>
             <div class="hero-shot-wrap">
                 <div class="hero-shot" id="hero-carousel">
@@ -953,12 +988,12 @@
     <div class="checker-divider"></div>
 
     <!-- ══════════════════════════════════════════════════════════
-     WHAT'S INSIDE — 5 MODELS
+     WHAT'S INSIDE — 11 MODELS
      ══════════════════════════════════════════════════════════ -->
     <section class="module alt" id="models">
         <div class="container">
             <div class="eyebrow">✦ what's inside</div>
-            <h2>5 pretrained models, each a different visual territory</h2>
+            <h2>11 pretrained models, each a different visual territory</h2>
             <div class="grid-5">
                 <div class="card">
                     <div class="card-num">01</div>
@@ -984,6 +1019,36 @@
                     <div class="card-num">05</div>
                     <h3>Automotive Drift</h3>
                     <p>LSUN Cars. Chrome logic, strange reflections, body lines that almost make sense.</p>
+                </div>
+                <div class="card">
+                    <div class="card-num">06</div>
+                    <h3>Feral Composite</h3>
+                    <p>AFHQ Wild — foxes, wolves, big cats. Species logic breaks down first: fur, fangs, and extra eyes compose into animals that were never one species to begin with.</p>
+                </div>
+                <div class="card">
+                    <div class="card-num">07</div>
+                    <h3>Cluster Dread</h3>
+                    <p>BreCaHAD breast-tissue histology slides. Cellular clusters and stain patterns read as pure texture, not tissue — clinical imagery pushed until it stops meaning anything medical.</p>
+                </div>
+                <div class="card">
+                    <div class="card-num">08</div>
+                    <h3>Glue Factory</h3>
+                    <p>LSUN Horses. Musculature and gait logic collapse into something between anatomy and taxidermy — coherent from a distance, wrong up close.</p>
+                </div>
+                <div class="card">
+                    <div class="card-num">09</div>
+                    <h3>Phantom Atlas</h3>
+                    <p>Trained on cartographic imagery. Roads, coastlines, and contour lines recombine into places that don't exist on any map — geography with the geography removed.</p>
+                </div>
+                <div class="card">
+                    <div class="card-num">10</div>
+                    <h3>Stain Field</h3>
+                    <p>A dataset of clustered hole and pore patterns. Built for people who find repeating texture more unsettling than any face. Skip this one if trypophobia affects you.</p>
+                </div>
+                <div class="card">
+                    <div class="card-num">11</div>
+                    <h3>Forgery Wing</h3>
+                    <p>Trained across centuries of painting movements. Brushwork and composition drift across eras in a single frame — a museum wing curated by something with no sense of period.</p>
                 </div>
             </div>
         </div>
@@ -1225,11 +1290,16 @@
      FOOTER
      ══════════════════════════════════════════════════════════ -->
     <footer>
-        <div class="container">
-            <div class="foot-hearts">✦ ⛓ ✦</div>
-            <div class="foot-line"><strong>TURRRBO</strong> — a stylegan instrument. Built with StyleGAN2-ADA-PyTorch. Weights courtesy of NVIDIA Research, non-commercial license.</div>
-            <div class="foot-line">No servers were harmed in the making of this image, because there are no servers.</div>
+        <div class="schwwaaa-footer" aria-label="schwwaaa footer logo">
+            <!-- <div class="foot-hearts">✦ ⛓ ✦</div> -->
+            <!-- <div class="foot-line"><strong>TURRRBO</strong> — a stylegan instrument. Built with StyleGAN2-ADA-PyTorch. Weights courtesy of NVIDIA Research, non-commercial license.</div>
+            <div class="foot-line">No servers were harmed in the making of this image, because there are no servers.</div> -->
             <div class="foot-line" style="margin-top: 14px;"><a href="docs.html" class="docs-link">✎ read the docs</a></div>
+    <br/>
+    <br/>
+            <a class="schwwaaa-footer-logo" href="https://linktr.ee/schwwaaa" target="_blank" rel="noopener noreferrer">
+        <img class="schwwaaa-footer-image" src="/assets/schwwaaa-logo.png" alt="schwwaaa">
+    </a>
         </div>
     </footer>
 

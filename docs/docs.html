@@ -1143,6 +1143,50 @@ code {
 /* page transitions */
 .section { animation: fadeIn 0.2s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+        .schwwaaa-footer {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: 28px 0 36px;
+            text-align: center;
+            font-family: "Audiowide", sans-serif;
+        }
+
+        .schwwaaa-footer-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .schwwaaa-footer-image {
+            display: block;
+            width: min(168px, 44vw);
+            height: auto;
+            object-fit: contain;
+            opacity: 0.9;
+            filter: drop-shadow(0 0 12px rgba(255,255,255,0.22))
+                    drop-shadow(0 0 22px rgba(13,110,253,0.18));
+            transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .schwwaaa-footer-logo:hover .schwwaaa-footer-image {
+            opacity: 1;
+            transform: translateY(-1px);
+            filter: drop-shadow(0 0 14px rgba(255,255,255,0.35))
+                    drop-shadow(0 0 28px rgba(13,110,253,0.32));
+        }
+
+        .schwwaaa-footer-label {
+            display: block;
+            margin-top: 8px;
+            color: rgba(255,255,255,0.54);
+            font-size: 0.58rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
 </style>
 </head>
 <body>
@@ -1205,7 +1249,7 @@ code {
     </div>
     <div class="topbar-links">
       <a href="index.html" class="topbar-link">← turrrbo.app</a>
-      <a href="https://github.com" class="topbar-link">GitHub ↗</a>
+      <a href="https://github.com/schwwaaa/TURRRBO" class="topbar-link">GitHub ↗</a>
       <a href="https://github.com/NVlabs/stylegan2-ada-pytorch" class="topbar-link">StyleGAN2 ↗</a>
     </div>
   </div>
@@ -1303,15 +1347,15 @@ code {
 git clone https://github.com/NVlabs/stylegan2-ada-pytorch.git backend/vendor/stylegan2
 
 <span class="comment"># 2. Create Python virtual environment</span>
-python3 -m venv backend/.venv
+python3 -m venv backend/env
 
 <span class="comment"># 3. Install dependencies</span>
-backend/.venv/bin/pip install torch torchvision fastapi uvicorn pydantic pillow numpy requests
-backend/.venv/bin/pip install <span class="string">"numpy&lt;2.0"</span>  <span class="comment"># required — StyleGAN2 uses numpy 1.x API</span>
-backend/.venv/bin/pip install git+https://github.com/openai/CLIP.git  <span class="comment"># optional: for text prompts</span>
+backend/env/bin/pip install torch torchvision fastapi uvicorn pydantic pillow numpy requests
+backend/env/bin/pip install <span class="string">"numpy&lt;2.0"</span>  <span class="comment"># required — StyleGAN2 uses numpy 1.x API</span>
+backend/env/bin/pip install git+https://github.com/openai/CLIP.git  <span class="comment"># optional: for text prompts</span>
 
-<span class="comment"># 4. Download model checkpoints</span>
-backend/.venv/bin/python3 scripts/download_models.py
+<span class="comment"># 4. Download model checkpoints (all 11)</span>
+backend/env/bin/python3 scripts/fetch_models.py
 
 <span class="comment"># 5. Install Node dependencies</span>
 npm install</pre>
@@ -1331,7 +1375,14 @@ npm install</pre>
       <tr><td class="param-name">lsun_churches_256</td><td>Haunted Schematics</td><td>256px</td><td>403 MB</td></tr>
       <tr><td class="param-name">afhq_cats_512</td><td>Animal Forms</td><td>512px</td><td>329 MB</td></tr>
       <tr><td class="param-name">lsun_cars_512</td><td>Automotive Drift</td><td>512px</td><td>403 MB</td></tr>
+      <tr><td class="param-name">afhq_wild_512</td><td>Feral Composite</td><td>512px</td><td>329 MB</td></tr>
+      <tr><td class="param-name">brecahad_512</td><td>Cluster Dread</td><td>512px</td><td>329 MB</td></tr>
+      <tr><td class="param-name">lsun_horse_256</td><td>Glue Factory</td><td>256px</td><td>403 MB</td></tr>
+      <tr><td class="param-name">maps_1024</td><td>Phantom Atlas</td><td>1024px</td><td>~350 MB*</td></tr>
+      <tr><td class="param-name">trypophobia_1024</td><td>Stain Field</td><td>1024px</td><td>~350 MB*</td></tr>
+      <tr><td class="param-name">wikiart_1024</td><td>Forgery Wing</td><td>1024px</td><td>~350 MB*</td></tr>
     </table>
+    <p class="control-note" style="margin-top:8px">* Approximate — these three are community-sourced/converted checkpoints rather than official NVIDIA releases, so exact size depends on the source file.</p>
   </section>
 
   <!-- ════════════════ QUICK START ════════════════ -->
@@ -1552,6 +1603,90 @@ npm install</pre>
         <div class="model-card-field"><span class="model-card-key">Best for</span><span class="model-card-val">Automotive and industrial-object forms, body shapes, reflections</span></div>
         <div class="model-card-field"><span class="model-card-key">Rec. ψ</span><span class="model-card-val">0.7</span></div>
         <div style="margin-top:8px"><span class="tag">object</span><span class="tag">vehicle</span><span class="tag">industrial</span></div>
+      </div>
+    </div>
+
+    <div class="model-card-example">
+      <div class="model-card-header">
+        <div class="model-card-title">Feral Composite</div>
+        <div class="model-card-res">afhq_wild_512 · 512px</div>
+      </div>
+      <div class="model-card-body">
+        <div class="model-card-field"><span class="model-card-key">Dataset</span><span class="model-card-val">AFHQ (Animal Faces-HQ) — wild subset: foxes, wolves, lions, tigers</span></div>
+        <div class="model-card-field"><span class="model-card-key">Character</span><span class="model-card-val">Same centered-face composition as Animal Forms, but species logic breaks down faster — fur, fangs, and extra eyes recombine into animals that were never one species</span></div>
+        <div class="model-card-field"><span class="model-card-key">Best for</span><span class="model-card-val">Creature design, hybrid-animal forms, texture-rich fur/fang detail</span></div>
+        <div class="model-card-field"><span class="model-card-key">Rec. ψ</span><span class="model-card-val">0.65</span></div>
+        <div style="margin-top:8px"><span class="tag">animal</span><span class="tag">wild</span><span class="tag">hybrid</span></div>
+      </div>
+    </div>
+
+    <div class="model-card-example">
+      <div class="model-card-header">
+        <div class="model-card-title">Cluster Dread</div>
+        <div class="model-card-res">brecahad_512 · 512px</div>
+      </div>
+      <div class="model-card-body">
+        <div class="model-card-field"><span class="model-card-key">Dataset</span><span class="model-card-val">BreCaHAD — breast-tissue histopathology slides</span></div>
+        <div class="model-card-field"><span class="model-card-key">Character</span><span class="model-card-val">Cellular clusters and stain patterns read as pure texture rather than tissue. Small training set (BreCaHAD is a few hundred images), so it repeats motifs more than the larger datasets</span></div>
+        <div class="model-card-field"><span class="model-card-key">Best for</span><span class="model-card-val">Organic/cellular texture, clinical-uncanny surfaces, pattern work</span></div>
+        <div class="model-card-field"><span class="model-card-key">Rec. ψ</span><span class="model-card-val">0.6</span></div>
+        <div style="margin-top:8px"><span class="tag">texture</span><span class="tag">organic</span><span class="tag">medical</span></div>
+      </div>
+    </div>
+
+    <div class="model-card-example">
+      <div class="model-card-header">
+        <div class="model-card-title">Glue Factory</div>
+        <div class="model-card-res">lsun_horse_256 · 256px</div>
+      </div>
+      <div class="model-card-body">
+        <div class="model-card-field"><span class="model-card-key">Dataset</span><span class="model-card-val">LSUN Horses — legacy TF-StyleGAN2 checkpoint, converted to ADA-PyTorch format</span></div>
+        <div class="model-card-field"><span class="model-card-key">Character</span><span class="model-card-val">Musculature and gait logic collapse into something between anatomy and taxidermy — coherent from a distance, wrong up close. Lowest res in the set alongside Haunted Schematics</span></div>
+        <div class="model-card-field"><span class="model-card-key">Best for</span><span class="model-card-val">Anatomical abstraction, creature-adjacent forms, sketch-like structure</span></div>
+        <div class="model-card-field"><span class="model-card-key">Rec. ψ</span><span class="model-card-val">0.7</span></div>
+        <div style="margin-top:8px"><span class="tag">animal</span><span class="tag">anatomy</span><span class="tag">legacy</span></div>
+      </div>
+    </div>
+
+    <div class="model-card-example">
+      <div class="model-card-header">
+        <div class="model-card-title">Phantom Atlas</div>
+        <div class="model-card-res">maps_1024 · 1024px</div>
+      </div>
+      <div class="model-card-body">
+        <div class="model-card-field"><span class="model-card-key">Dataset</span><span class="model-card-val">Cartographic imagery — roads, coastlines, contour lines</span></div>
+        <div class="model-card-field"><span class="model-card-key">Character</span><span class="model-card-val">Geography with the geography removed — road networks and coastlines recombine into places that don't exist on any map. Non-commercial, community-sourced checkpoint</span></div>
+        <div class="model-card-field"><span class="model-card-key">Best for</span><span class="model-card-val">Abstract cartography, generative maps, top-down pattern work</span></div>
+        <div class="model-card-field"><span class="model-card-key">Rec. ψ</span><span class="model-card-val">0.7</span></div>
+        <div style="margin-top:8px"><span class="tag">map</span><span class="tag">abstract</span><span class="tag">high-res</span></div>
+      </div>
+    </div>
+
+    <div class="model-card-example">
+      <div class="model-card-header">
+        <div class="model-card-title">Stain Field</div>
+        <div class="model-card-res">trypophobia_1024 · 1024px</div>
+      </div>
+      <div class="model-card-body">
+        <div class="model-card-field"><span class="model-card-key">Dataset</span><span class="model-card-val">Clustered hole/pore pattern imagery. Community-sourced checkpoint, hosted on Google Drive</span></div>
+        <div class="model-card-field"><span class="model-card-key">Character</span><span class="model-card-val">Dense repeating texture rather than any recognizable subject. ⚠ If trypophobia (aversion to clustered-hole patterns) affects you, skip this one</span></div>
+        <div class="model-card-field"><span class="model-card-key">Best for</span><span class="model-card-val">Pure texture work, unsettling pattern fields, non-figurative output</span></div>
+        <div class="model-card-field"><span class="model-card-key">Rec. ψ</span><span class="model-card-val">0.6</span></div>
+        <div style="margin-top:8px"><span class="tag">texture</span><span class="tag">pattern</span><span class="tag">high-res</span></div>
+      </div>
+    </div>
+
+    <div class="model-card-example">
+      <div class="model-card-header">
+        <div class="model-card-title">Forgery Wing</div>
+        <div class="model-card-res">wikiart_1024 · 1024px</div>
+      </div>
+      <div class="model-card-body">
+        <div class="model-card-field"><span class="model-card-key">Dataset</span><span class="model-card-val">WikiArt — paintings spanning multiple historical movements</span></div>
+        <div class="model-card-field"><span class="model-card-key">Character</span><span class="model-card-val">Brushwork and composition drift across centuries within a single frame. Community-converted checkpoint — conversion quality can vary run to run</span></div>
+        <div class="model-card-field"><span class="model-card-key">Best for</span><span class="model-card-val">Painterly abstraction, cross-era composition, art-historical drift</span></div>
+        <div class="model-card-field"><span class="model-card-key">Rec. ψ</span><span class="model-card-val">0.65</span></div>
+        <div style="margin-top:8px"><span class="tag">painting</span><span class="tag">art</span><span class="tag">high-res</span></div>
       </div>
     </div>
 
@@ -1794,6 +1929,12 @@ npm install</pre>
           <div class="ui-model-item">Haunted Schematics</div>
           <div class="ui-model-item">Animal Forms</div>
           <div class="ui-model-item">Automotive Drift</div>
+          <div class="ui-model-item">Feral Composite</div>
+          <div class="ui-model-item">Cluster Dread</div>
+          <div class="ui-model-item">Glue Factory</div>
+          <div class="ui-model-item">Phantom Atlas</div>
+          <div class="ui-model-item">Stain Field</div>
+          <div class="ui-model-item">Forgery Wing</div>
         </div>
         <div class="ui-col ui-preview-center">
           <div class="ui-preview-icon">◈</div>
@@ -2455,5 +2596,10 @@ document.getElementById('mobile-toggle').onclick = function() {
   document.getElementById('sidebar').classList.toggle('open');
 };
 </script>
+<footer class="schwwaaa-footer" aria-label="schwwaaa footer logo">
+    <a class="schwwaaa-footer-logo" href="https://linktr.ee/schwwaaa" target="_blank" rel="noopener noreferrer">
+        <img class="schwwaaa-footer-image" src="/assets/schwwaaa-logo.png" alt="schwwaaa">
+    </a>
+</footer>
 </body>
 </html>

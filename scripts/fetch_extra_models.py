@@ -1,12 +1,26 @@
 #!/usr/bin/env python3
 """
+⚠ SUPERSEDED — use scripts/fetch_models.py instead.
+
+This is an older version of that script: it's missing `maps_1024` and
+`wikiart_1024` (both present in your current backend/models/), has a stray
+`beetles_1024` entry that isn't one of your current models, and doesn't do
+the integrity verification (size/HTML checks) that fetch_models.py added to
+fix the "pickle data was truncated" issue.
+
+Kept here only so nothing is silently deleted out from under you — safe to
+remove this file once you've confirmed fetch_models.py covers everything
+you need (as of this check, it does: all 11 current models are in it).
+
+--- original docstring below ---
+
 Fetch (and convert where needed) the five "weird/broken" checkpoints into
 backend/models/<id>/<id>.pkl so the model_registry picks them up on restart.
 
 Run from the repo root with the backend venv:
 
-    backend/.venv/bin/python scripts/fetch_extra_models.py
-    backend/.venv/bin/python scripts/fetch_extra_models.py --only brecahad_512 afhq_wild_512
+    backend/env/bin/python scripts/fetch_extra_models.py
+    backend/env/bin/python scripts/fetch_extra_models.py --only brecahad_512 afhq_wild_512
 
 Two checkpoint types:
   - "native"  : already in StyleGAN2-ADA-PyTorch format. Downloaded as-is.
@@ -14,7 +28,7 @@ Two checkpoint types:
                 converter (found in backend/vendor/stylegan2/legacy.py).
 
 Requirements:
-    backend/.venv/bin/pip install requests gdown
+    backend/env/bin/pip install requests gdown
     # and the ADA-PyTorch engine must already be cloned at:
     #   backend/vendor/stylegan2/   (contains legacy.py)
 """

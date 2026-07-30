@@ -18,6 +18,14 @@ import hashlib
 import urllib.request
 from pathlib import Path
 
+# ── Where models land ────────────────────────────────────────────────────────
+# Every checkpoint goes to:   backend/models/<model_id>/<filename>.pkl
+# This is the ONE canonical model directory for the whole project — the
+# backend reads from it directly in dev, and `src-tauri/resources/models` is
+# a symlink pointing at this same folder (set up once via `ln -s`, see
+# TURRRBO_DEV_REFERENCE.md), so the Tauri bundler picks up the same files at
+# build time. Never copy .pkl files anywhere else — there should only ever be
+# ONE physical copy of these weights on disk.
 BACKEND = Path(__file__).parent.parent / "backend"
 
 MODELS = {
